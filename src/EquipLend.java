@@ -6,13 +6,16 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class EquipLend {
     private final JFrame frame;
     private JTextField emailTextField;
     private JPasswordField passwordTextField;
+    private JPasswordField confirmPasswordTextField;
     private JTextField nameTextField;
     private JTextField mobileNumberTextField;
-    private JPasswordField confirmPasswordTextField;
+
 
     public EquipLend() {
         frame = new JFrame("Equipment Lending and Rental System");
@@ -68,17 +71,7 @@ public class EquipLend {
         });
         return button;
     }
-    /*   public addLabelAndField(JPanel panel, GridBagConstraints constraints, String label, int row, JTextField textField) {
-        JLabel fieldLabel = new JLabel(label);
-        constraints.gridx = 0;
-        constraints.gridy = row;
-        panel.add(fieldLabel, constraints);
 
-        constraints.gridx = 1;
-        constraints.gridy = row;
-        panel.add(textField, constraints);
-    }
-*/
     private void openLoginFrame() {
         JFrame loginFrame = new JFrame("Login Page");
         loginFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -106,21 +99,11 @@ public class EquipLend {
                 String email = emailTextField.getText();
                 String password = new String(passwordTextField.getPassword());
 
-                // Add logic to check login credentials here
-                // For example:
-                // if (checkLoginCredentials(email, password)) {
-                //     JOptionPane.showMessageDialog(loginFrame, "Login successful!");
-                //     openWelcomeFrame("User");
-                //     loginFrame.dispose();
-                // } else {
-                //     JOptionPane.showMessageDialog(loginFrame, "Login failed. Please check your credentials.");
-                // }
             }
         });
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // You can bypass the database check and directly open the welcome frame.
                 openWelcomeFrame("User");
                 loginFrame.dispose();
             }
@@ -132,16 +115,7 @@ public class EquipLend {
         loginFrame.setVisible(true);
     }
 
-   /*  private void addLabelAndField(JPanel panel, GridBagConstraints constraints, String label, int row, JTextField textField) {
-        JLabel fieldLabel = new JLabel(label);
-        constraints.gridx = 0;
-        constraints.gridy = row;
-        panel.add(fieldLabel, constraints);
 
-        constraints.gridx = 1;
-        constraints.gridy = row;
-        panel.add(textField, constraints);
-    }*/
 
     private void openSignupFrame() {
         JFrame signupFrame = new JFrame("Sign Up Page");
@@ -187,22 +161,12 @@ public class EquipLend {
                 String password = new String(passwordTextField.getPassword());
                 String confirmPassword = new String(confirmPasswordTextField.getPassword());
 
-                // Add logic to register the user here
-                // For example:
-                // if (registerUser(name, email, mobileNumber, role, password, confirmPassword)) {
-                //     JOptionPane.showMessageDialog(signupFrame, "Registration successful!");
-                //     openWelcomeFrame(name);
-                //     signupFrame.dispose();
-                // } else {
-                //     JOptionPane.showMessageDialog(signupFrame, "Registration failed. Please check your input.");
-                // }
             }
         });
 
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Bypass user registration logic and directly open the welcome frame.
                 openWelcomeFrame(nameTextField.getText());
                 signupFrame.dispose();
             }
@@ -333,13 +297,11 @@ public class EquipLend {
                 String costPerDay = costField.getText();
                 String selectedCategory = categoryComboBox.getSelectedItem().toString();
 
-                // Add your logic to save the product to your database or perform other actions here
-                // For this example, we will just display the entered details
+
                 String message = "Product Name: " + productName + "\nDescription: " + description + "\nCondition: " + condition
                         + "\nCost per day: " + costPerDay + "\nCategory: " + selectedCategory;
                 JOptionPane.showMessageDialog(lendingFrame, message);
 
-                // Optionally, you can clear the fields after submission
                 productNameField.setText("");
                 descriptionField.setText("");
                 conditionField.setText("");
@@ -421,7 +383,7 @@ public class EquipLend {
         JFrame resultFrame = new JFrame("Search Results");
         resultFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // Create a panel to display search results
+
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
 
@@ -429,7 +391,7 @@ public class EquipLend {
         countLabel.setFont(new Font("Arial", Font.BOLD, 16));
         resultPanel.add(countLabel);
 
-        // Add search results to the panel
+        
         for (String result : searchResults) {
             JLabel resultLabel = new JLabel(result);
             resultLabel.setFont(new Font("Arial", Font.PLAIN, 16));
